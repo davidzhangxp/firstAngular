@@ -1,0 +1,8 @@
+<p *ngIf="product && product.price > 700">
+  <button
+    type="button"
+    (click)="addAlert('the product: ' + product.name + ' is under 700')"
+  >
+    Notify Me
+  </button>
+</p>

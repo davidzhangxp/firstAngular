@@ -1,0 +1,15 @@
+<p>shipping Price</p>
+<input #inputbox value="test viewchild" />
+<button #btn (click)="test()">test</button>
+<div class="shipping-item" *ngFor="let shipping of shippingCosts | async">
+  <span>{{ shipping.type }}</span
+  ><span>{{ shipping.price | currency }}</span>
+</div>
+<nav>
+  <ul>
+    <li><a routerLink="child-a">Child A</a></li>
+    <li><a routerLink="child-b">Child B</a></li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>

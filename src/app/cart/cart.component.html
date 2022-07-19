@@ -1,0 +1,41 @@
+<p>cart Items!</p>
+<p><a routerLink="/shipping">shipping price</a></p>
+<div class="cart-item" *ngFor="let item of items">
+  <span>{{ item.name }}</span
+  ><span>{{ item.price | currency }}</span>
+</div>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name</label>
+    <input id="name" type="text" formControlName="name" />
+  </div>
+  <div>
+    <label for="address">Address</label>
+    <input id="address" type="text" formControlName="address" />
+  </div>
+  <button type="submit" class="button">Purchase</button>
+</form>
+
+<form class="example-form" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="form-field" appearance="fill" color="primary">
+    <mat-label>Name</mat-label>
+    <mat-select formControlName="name">
+      <mat-optgroup label="web">
+        <mat-option value="angular">Angular</mat-option>
+        <mat-option value="react">React</mat-option>
+        <mat-option value="vue">Vue</mat-option></mat-optgroup
+      >
+      <mat-optgroup label="mobile">
+        <mat-option value="angular">Angular</mat-option>
+        <mat-option value="react">React</mat-option>
+        <mat-option value="vue">Vue</mat-option></mat-optgroup
+      >
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Address</mat-label>
+    <input matInput placeholder="address" required formControlName="address" />
+  </mat-form-field>
+
+  <button mat-raised-button type="submit" color="primary">submit</button>
+</form>

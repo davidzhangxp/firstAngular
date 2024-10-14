@@ -10,7 +10,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductAlertComponent } from './product-alert/product-alert.component';
 import { CartComponent } from './cart/cart.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ShippingComponent } from './shipping/shipping.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChildComponentComponent } from './child-component/child-component.component';
@@ -33,32 +33,25 @@ const routes: Routes = [
     children: [{ path: 'child-a', component: ChildComponentComponent }],
   },
 ];
-@NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    ProductDetailsComponent,
-    ProductListComponent,
-    ProductAlertComponent,
-    CartComponent,
-    ShippingComponent,
-    OpenCloseComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule.forRoot(routes),
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-  ],
-  exports: [RouterModule],
-  providers: [],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        NavbarComponent,
+        ProductDetailsComponent,
+        ProductListComponent,
+        ProductAlertComponent,
+        CartComponent,
+        ShippingComponent,
+        OpenCloseComponent,
+    ],
+    exports: [RouterModule],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        RouterModule.forRoot(routes),
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}

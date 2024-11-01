@@ -1,6 +1,7 @@
 <p>products</p>
-<div *ngFor="let product of products">
-  <h3>
+<section class="result">
+<div class="listing" *ngFor="let product of products">
+  <h3 class="product_name">
     <a
       [title]="product.name + 'details'"
       [routerLink]="['/products', product.id]"
@@ -8,10 +9,11 @@
     >
   </h3>
   <p *ngIf="product.description">{{ product.description }}</p>
-  <button mat-raised-button color="primary" (click)="share()">share</button>
+  <button mat-raised-button (click)="share()">share</button>
   <app-product-alert
     [product]="product"
     (notify)="onNotify($event)"
   ></app-product-alert>
 </div>
-<app-open-close></app-open-close>
+</section>
+
